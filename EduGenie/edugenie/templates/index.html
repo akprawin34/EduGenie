@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EduGenie — AI Learning Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='/styles.css') }}">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div>
+        <span class="badge">EDUGENIE</span>
+        <h1>Your personal AI tutor for learning support.</h1>
+        <p>Ask questions, understand difficult topics, summarize passages, generate quizzes, and build learning paths.</p>
+      </div>
+      <div class="status-pill">{{ 'Demo mode' if demo_mode else 'Gemini mode' }}</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Ask EduGenie a question</h2>
+      <div class="row">
+        <input id="question" placeholder="Why is the sky blue?" maxlength="1000">
+        <button onclick="askQuestion()">Ask</button>
+      </div>
+      <div id="qna-result" class="result hidden"></div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Need an explanation?</h2>
+        <input id="topic" placeholder="Photosynthesis" maxlength="300">
+        <button onclick="explainTopic()">Explain</button>
+        <div id="explain-result" class="result hidden"></div>
+      </article>
+
+      <article class="card">
+        <h2>Summarize a paragraph</h2>
+        <textarea id="summary-text" rows="8" maxlength="12000" placeholder="Paste a long educational passage here..."></textarea>
+        <button onclick="summarizeText()">Summarize</button>
+        <div id="summary-result" class="result hidden"></div>
+      </article>
+
+      <article class="card">
+        <h2>Generate a quiz</h2>
+        <textarea id="quiz-text" rows="7" maxlength="12000" placeholder="Paste a topic or passage here..."></textarea>
+        <button onclick="generateQuiz()">Generate Quiz</button>
+        <div id="quiz-result" class="result hidden"></div>
+      </article>
+
+      <article class="card">
+        <h2>Get learning recommendations</h2>
+        <input id="learning-topic" placeholder="e.g. Linear Regression" maxlength="300">
+        <button onclick="getLearningPath()">Get Recommendations</button>
+        <div id="learning-result" class="result hidden"></div>
+      </article>
+    </section>
+  </main>
+
+  <footer>EduGenie · FastAPI · Gemini</footer>
+  <script src="{{ url_for('static', path='/app.js') }}"></script>
+</body>
+</html>
